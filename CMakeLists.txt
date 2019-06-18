@@ -8,12 +8,13 @@ find_package(catkin REQUIRED COMPONENTS
   geographic_msgs
   nmea_msgs
   roscpp
+  quaternion_operation
 )
 
 catkin_package(
   INCLUDE_DIRS include
 #  LIBRARIES nmea_to_geopose
-  CATKIN_DEPENDS geodesy geographic_msgs nmea_msgs roscpp
+  CATKIN_DEPENDS geodesy geographic_msgs nmea_msgs roscpp quaternion_operation
 #  DEPENDS system_lib
 )
 

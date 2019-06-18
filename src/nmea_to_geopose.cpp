@@ -49,7 +49,11 @@ void NmeaToGeoPose::nmeaSentenceCallback(const nmea_msgs::Sentence::ConstPtr msg
         boost::optional<std::vector<std::string> > data = splitSentence(sentence);
         if(data)
         {
-
+            if(data.get()[2] == "T")
+            {
+                double heading = std::stod(data.get()[1]);
+                
+            }
         }
     }
 }
