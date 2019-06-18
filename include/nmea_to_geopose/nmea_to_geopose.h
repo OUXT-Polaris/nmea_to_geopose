@@ -10,6 +10,7 @@
 #include <geographic_msgs/GeoPose.h>
 #include <geographic_msgs/GeoPoint.h>
 #include <geometry_msgs/Quaternion.h>
+#include <quaternion_operation/quaternion_operation.h>
 
 class NmeaToGeoPose
 {

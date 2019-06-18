@@ -11,6 +11,8 @@ find_package(catkin REQUIRED COMPONENTS
   quaternion_operation
 )
 
+find_package(Eigen3 REQUIRED)
+
 catkin_package(
   INCLUDE_DIRS include
 #  LIBRARIES nmea_to_geopose
@@ -21,6 +23,7 @@ catkin_package(
 include_directories(
   include
   ${catkin_INCLUDE_DIRS}
+  ${EIGEN3_INCLUDE_DIR}
 )
 
 add_executable(nmea_to_geopose_node src/nmea_to_geopose_node.cpp src/nmea_to_geopose.cpp)
