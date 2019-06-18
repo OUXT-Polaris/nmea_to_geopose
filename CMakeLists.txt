@@ -23,7 +23,7 @@ include_directories(
 )
 
 add_executable(nmea_to_geopose_node src/nmea_to_geopose_node.cpp src/nmea_to_geopose.cpp)
-target_link_libraries(nmea_to_geopose_node ${catkin_LIBRARIES})
+target_link_libraries(nmea_to_geopose_node ${catkin_LIBRARIES} glog)
 
 # install executables
 install(TARGETS nmea_to_geopose_node
