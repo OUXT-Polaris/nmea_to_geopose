@@ -23,6 +23,7 @@ private:
     void nmeaSentenceCallback(const nmea_msgs::Sentence::ConstPtr msg);
     std::string calculateChecksum(std::string sentence);
     std::string getHexString(uint8_t value);
+    ros::Publisher geopose_pub_;
     ros::Subscriber nmea_sub_;
     std::string input_topic_;
     boost::optional<geographic_msgs::GeoPoint> geopoint_;
