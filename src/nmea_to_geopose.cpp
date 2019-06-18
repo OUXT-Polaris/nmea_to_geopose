@@ -18,10 +18,30 @@ void NmeaToGeoPose::nmeaSentenceCallback(const nmea_msgs::Sentence::ConstPtr msg
     nmea_msgs::Sentence sentence = *msg;
     if(isGprmcSentence(sentence))
     {
+        geographic_msgs::GeoPoint geopoint;
         boost::optional<std::vector<std::string> > data = splitSentence(sentence);
         if(data)
         {
-            data.get()[0];
+            std::string lat_str = data.get()[3];
+            std::string north_or_south_str = data.get()[4];
+            double latitude = std::stod(lat_str.substr(0,3)) + std::stod(lat_str.substr(3))*60.0;
+            ROS_ASSERT(north_or_south_str == "N" || north_or_south_str == "S");
+            if(north_or_south_str == "S")
+            {
+                latitude = latitude*-1;
+            }
+            std::string lon_str = data.get()[5];
+            std::string east_or_west_str = data.get()[6];
+            double longitude = std::stod(lon_str.substr(0,3)) + std::stod(lon_str.substr(3))*60.0;
+            ROS_ASSERT(east_or_west_str == "E" || east_or_west_str == "W");
+            if(east_or_west_str == "W")
+            {
+                longitude = longitude*-1;
+            }
+            geopoint.latitude = latitude;
+            geopoint.longitude = longitude;
+            geopoint.altitude = 0.0;
+            geopoint_ = geopoint;
         }
     }
     if(isGphdtSentence(sentence))

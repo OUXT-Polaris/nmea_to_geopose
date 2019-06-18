@@ -7,6 +7,9 @@
 // Headers in ROS
 #include <ros/ros.h>
 #include <nmea_msgs/Sentence.h>
+#include <geographic_msgs/GeoPose.h>
+#include <geographic_msgs/GeoPoint.h>
+#include <geometry_msgs/Quaternion.h>
 
 class NmeaToGeoPose
 {
@@ -21,8 +24,8 @@ private:
     std::string getHexString(uint8_t value);
     ros::Subscriber nmea_sub_;
     std::string input_topic_;
-    boost::optional<nmea_msgs::Sentence> gprmc_sentence_;
-    boost::optional<nmea_msgs::Sentence> gphdt_sentence_;
+    boost::optional<geographic_msgs::GeoPoint> geopoint_;
+    boost::optional<geometry_msgs::Quaternion> quat_;
     bool isGprmcSentence(nmea_msgs::Sentence sentence);
     bool isGphdtSentence(nmea_msgs::Sentence sentence);
     std::vector<std::string> split(const std::string &s,char delim);
