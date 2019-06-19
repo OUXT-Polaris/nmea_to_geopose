@@ -34,6 +34,7 @@ private:
     std::vector<std::string> split(const std::string &s,char delim);
     std::vector<std::string> splitChecksum(std::string str);
     boost::optional<std::vector<std::string> > splitSentence(nmea_msgs::Sentence sentence);
+    boost::optional<ros::Time> last_timestamp_;
 };
 
 #endif  //NMEA_TO_GEOPOSE_NMEA_TO_GEOPOSE_H_INCLUDED

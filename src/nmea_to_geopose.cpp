@@ -65,11 +65,15 @@ void NmeaToGeoPose::nmeaSentenceCallback(const nmea_msgs::Sentence::ConstPtr msg
     }
     if(geopoint_ && quat_)
     {
-        geographic_msgs::GeoPoseStamped geopose;
-        geopose.pose.position = geopoint_.get();
-        geopose.pose.orientation = quat_.get();
-        geopose.header = msg->header;
-        geopose_pub_.publish(geopose);
+        if(!last_timestamp_ || last_timestamp_ != msg->header.stamp)
+        {
+            last_timestamp_ = msg->header.stamp;
+            geographic_msgs::GeoPoseStamped geopose;
+            geopose.pose.position = geopoint_.get();
+            geopose.pose.orientation = quat_.get();
+            geopose.header = msg->header;
+            geopose_pub_.publish(geopose);
+        }
     }
 }
 
