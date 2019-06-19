@@ -8,6 +8,7 @@
 #include <ros/ros.h>
 #include <nmea_msgs/Sentence.h>
 #include <geographic_msgs/GeoPose.h>
+#include <geographic_msgs/GeoPoseStamped.h>
 #include <geographic_msgs/GeoPoint.h>
 #include <geometry_msgs/Quaternion.h>
 #include <quaternion_operation/quaternion_operation.h>

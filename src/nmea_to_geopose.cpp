@@ -6,7 +6,7 @@ NmeaToGeoPose::NmeaToGeoPose(ros::NodeHandle nh,ros::NodeHandle pnh)
     pnh_ = pnh;
     pnh_.param<std::string>("input_topic", input_topic_, "/nmea_sentence");
     nmea_sub_ = nh_.subscribe(input_topic_,1,&NmeaToGeoPose::nmeaSentenceCallback,this);
-    geopose_pub_ = pnh_.advertise<geographic_msgs::GeoPose>("geopose",1);
+    geopose_pub_ = pnh_.advertise<geographic_msgs::GeoPoseStamped>("geopose",1);
 }
 
 NmeaToGeoPose::~NmeaToGeoPose()
@@ -65,9 +65,10 @@ void NmeaToGeoPose::nmeaSentenceCallback(const nmea_msgs::Sentence::ConstPtr msg
     }
     if(geopoint_ && quat_)
     {
-        geographic_msgs::GeoPose geopose;
-        geopose.position = geopoint_.get();
-        geopose.orientation = quat_.get();
+        geographic_msgs::GeoPoseStamped geopose;
+        geopose.pose.position = geopoint_.get();
+        geopose.pose.orientation = quat_.get();
+        geopose.header = msg->header;
         geopose_pub_.publish(geopose);
     }
 }

@@ -1,0 +1,5 @@
+<?xml version="1.0"?>
+<launch>
+    <node pkg="nmea_to_geopose" type="nmea_to_geopose_node" name="nmea_to_geopose_node" output="screen" respawn="true" respawn_delay="0">
+    </node>
+</launch>
