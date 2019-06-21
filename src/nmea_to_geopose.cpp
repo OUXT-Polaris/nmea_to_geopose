@@ -56,7 +56,7 @@ void NmeaToGeoPose::nmeaSentenceCallback(const nmea_msgs::Sentence::ConstPtr msg
                 geometry_msgs::Vector3 vec;
                 vec.x = 0.0;
                 vec.y = 0.0;
-                vec.z = heading;
+                vec.z = heading/180*M_PI;
                 geometry_msgs::Quaternion quat = 
                     quaternion_operation::convertEulerAngleToQuaternion(vec);
                 quat_ = quat;
