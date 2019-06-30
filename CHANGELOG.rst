@@ -2,8 +2,8 @@
 Changelog for package nmea_to_geopose
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+0.0.1 (2019-06-30)
+------------------
 * update README.md
 * change degree to radian
 * update publish rule
