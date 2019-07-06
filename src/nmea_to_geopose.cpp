@@ -5,7 +5,7 @@ NmeaToGeoPose::NmeaToGeoPose(ros::NodeHandle nh,ros::NodeHandle pnh)
     nh_ = nh;
     pnh_ = pnh;
     pnh_.param<std::string>("input_topic", input_topic_, "/nmea_sentence");
-    nmea_sub_ = nh_.subscribe(input_topic_,1,&NmeaToGeoPose::nmeaSentenceCallback,this);
+    nmea_sub_ = nh_.subscribe(input_topic_,10,&NmeaToGeoPose::nmeaSentenceCallback,this);
     geopose_pub_ = pnh_.advertise<geographic_msgs::GeoPoseStamped>("geopose",1);
 }
 
