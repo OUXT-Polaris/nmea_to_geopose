@@ -5,7 +5,7 @@ NmeaToGeoPose::NmeaToGeoPose(ros::NodeHandle nh,ros::NodeHandle pnh)
     nh_ = nh;
     pnh_ = pnh;
     pnh_.param<std::string>("input_topic", input_topic_, "/nmea_sentence");
-    nmea_sub_ = nh_.subscribe(input_topic_,1,&NmeaToGeoPose::nmeaSentenceCallback,this);
+    nmea_sub_ = nh_.subscribe(input_topic_,10,&NmeaToGeoPose::nmeaSentenceCallback,this);
     geopose_pub_ = pnh_.advertise<geographic_msgs::GeoPoseStamped>("geopose",1);
 }
 
@@ -56,7 +56,7 @@ void NmeaToGeoPose::nmeaSentenceCallback(const nmea_msgs::Sentence::ConstPtr msg
                 geometry_msgs::Vector3 vec;
                 vec.x = 0.0;
                 vec.y = 0.0;
-                vec.z = heading/180*M_PI;
+                vec.z = heading/180*M_PI*-1;
                 geometry_msgs::Quaternion quat = 
                     quaternion_operation::convertEulerAngleToQuaternion(vec);
                 quat_ = quat;
