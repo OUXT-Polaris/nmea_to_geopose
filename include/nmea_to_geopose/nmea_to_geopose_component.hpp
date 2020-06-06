@@ -1,5 +1,19 @@
-#ifndef NMEA_TO_GEOPOSE_NMEA_TO_GEOPOSE_H_INCLUDED
-#define NMEA_TO_GEOPOSE_NMEA_TO_GEOPOSE_H_INCLUDED
+// Copyright (c) 2019 OUXT Polaris
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//     http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+
+#ifndef NMEA_TO_GEOPOSE__NMEA_TO_GEOPOSE_COMPONENT_HPP_
+#define NMEA_TO_GEOPOSE__NMEA_TO_GEOPOSE_COMPONENT_HPP_
 
 // Headers in Boost
 #include <boost/optional.hpp>
@@ -12,6 +26,10 @@
 #include <geographic_msgs/msg/geo_point.hpp>
 #include <geometry_msgs/msg/quaternion.hpp>
 #include <quaternion_operation/quaternion_operation.h>
+
+// Headers in STL
+#include <vector>
+#include <string>
 
 #if __cplusplus
 extern "C" {
@@ -82,6 +100,6 @@ private:
   boost::optional<std::vector<std::string>> splitSentence(nmea_msgs::msg::Sentence sentence);
   boost::optional<rclcpp::Time> last_timestamp_;
 };
-}
+}  // namespace nmea_to_geopose
 
-#endif  //NMEA_TO_GEOPOSE_NMEA_TO_GEOPOSE_H_INCLUDED
+#endif  // NMEA_TO_GEOPOSE__NMEA_TO_GEOPOSE_COMPONENT_HPP_
