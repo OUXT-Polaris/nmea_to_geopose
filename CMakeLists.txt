@@ -45,6 +45,13 @@ rclcpp_components_register_nodes(nmea_to_geopose_component
   "nmea_geopose::NmeaToGeoPoseComponent")
 
 add_executable(nmea_to_geopose_node src/nmea_to_geopose_node.cpp)
+ament_target_dependencies(nmea_to_geopose_node
+  rclcpp
+  rclcpp_components
+  nmea_msgs
+  geodesy
+  geographic_msgs
+  quaternion_operation)
 target_link_libraries(nmea_to_geopose_node nmea_to_geopose_component glog)
 
 install(TARGETS
