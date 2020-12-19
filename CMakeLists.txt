@@ -24,6 +24,7 @@ find_package(nmea_msgs REQUIRED)
 find_package(geographic_msgs REQUIRED)
 find_package(quaternion_operation REQUIRED)
 find_package(Eigen3 REQUIRED)
+find_package(tf2_ros REQUIRED)
 
 include_directories(
   include
@@ -40,7 +41,8 @@ ament_target_dependencies(nmea_to_geopose_component
   nmea_msgs
   geodesy
   geographic_msgs
-  quaternion_operation)
+  quaternion_operation
+  tf2_ros)
 rclcpp_components_register_nodes(nmea_to_geopose_component
   "nmea_geopose::NmeaToGeoPoseComponent")
 
@@ -51,7 +53,8 @@ ament_target_dependencies(nmea_to_geopose_node
   nmea_msgs
   geodesy
   geographic_msgs
-  quaternion_operation)
+  quaternion_operation
+  tf2_ros)
 target_link_libraries(nmea_to_geopose_node nmea_to_geopose_component glog)
 
 install(TARGETS
