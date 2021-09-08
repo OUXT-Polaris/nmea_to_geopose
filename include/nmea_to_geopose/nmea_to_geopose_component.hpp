@@ -19,17 +19,18 @@
 #include <boost/optional.hpp>
 
 // Headers in ROS
-#include <rclcpp/rclcpp.hpp>
-#include <nmea_msgs/msg/sentence.hpp>
-#include <geographic_msgs/msg/geo_pose.hpp>
-#include <geographic_msgs/msg/geo_pose_stamped.hpp>
-#include <geographic_msgs/msg/geo_point.hpp>
-#include <geometry_msgs/msg/quaternion.hpp>
 #include <quaternion_operation/quaternion_operation.h>
 
+#include <geographic_msgs/msg/geo_point.hpp>
+#include <geographic_msgs/msg/geo_pose.hpp>
+#include <geographic_msgs/msg/geo_pose_stamped.hpp>
+#include <geometry_msgs/msg/quaternion.hpp>
+#include <nmea_msgs/msg/sentence.hpp>
+#include <rclcpp/rclcpp.hpp>
+
 // Headers in STL
-#include <vector>
 #include <string>
+#include <vector>
 
 #if __cplusplus
 extern "C" {
@@ -56,14 +57,11 @@ extern "C" {
   NMEA_TO_GEOPOSE_NMEA_TO_GEOPOSE_COMPONENT_PUBLIC
 #define NMEA_TO_GEOPOSE_NMEA_TO_GEOPOSE_COMPONENT_LOCAL
 #else
-#define NMEA_TO_GEOPOSE_NMEA_TO_GEOPOSE_COMPONENT_EXPORT \
-  __attribute__((visibility("default")))
+#define NMEA_TO_GEOPOSE_NMEA_TO_GEOPOSE_COMPONENT_EXPORT __attribute__((visibility("default")))
 #define NMEA_TO_GEOPOSE_NMEA_TO_GEOPOSE_COMPONENT_IMPORT
 #if __GNUC__ >= 4
-#define NMEA_TO_GEOPOSE_NMEA_TO_GEOPOSE_COMPONENT_PUBLIC \
-  __attribute__((visibility("default")))
-#define NMEA_TO_GEOPOSE_NMEA_TO_GEOPOSE_COMPONENT_LOCAL \
-  __attribute__((visibility("hidden")))
+#define NMEA_TO_GEOPOSE_NMEA_TO_GEOPOSE_COMPONENT_PUBLIC __attribute__((visibility("default")))
+#define NMEA_TO_GEOPOSE_NMEA_TO_GEOPOSE_COMPONENT_LOCAL __attribute__((visibility("hidden")))
 #else
 #define NMEA_TO_GEOPOSE_NMEA_TO_GEOPOSE_COMPONENT_PUBLIC
 #define NMEA_TO_GEOPOSE_NMEA_TO_GEOPOSE_COMPONENT_LOCAL

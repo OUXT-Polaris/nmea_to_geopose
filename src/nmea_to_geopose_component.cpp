@@ -16,8 +16,8 @@
 #include <rclcpp_components/register_node_macro.hpp>
 
 // Headers in STL
-#include <vector>
 #include <string>
+#include <vector>
 
 namespace nmea_to_geopose
 {
@@ -32,9 +32,7 @@ NmeaToGeoPoseComponent::NmeaToGeoPoseComponent(const rclcpp::NodeOptions & optio
     std::bind(&NmeaToGeoPoseComponent::nmeaSentenceCallback, this, std::placeholders::_1));
 }
 
-NmeaToGeoPoseComponent::~NmeaToGeoPoseComponent()
-{
-}
+NmeaToGeoPoseComponent::~NmeaToGeoPoseComponent() {}
 
 void NmeaToGeoPoseComponent::nmeaSentenceCallback(const nmea_msgs::msg::Sentence::SharedPtr msg)
 {
